@@ -15,20 +15,23 @@ public interface AgendaRepository extends MongoRepository<Agenda, Long>{
 	@Query("{fecha:'?0',hora'?1'}")
 	public List<Agenda> findByFechaAndHora(String fecha,String hora);
 	
+	@Query("{medicoId:?0}")
+	public List<Optional<Agenda>> consultarAgendaByIdMedico(Long id);
+	
 	@Query("{id:?0}")
-	public Optional<Agenda> consultarAgendaByIdMedico(Long id);
+	public List<Optional<Agenda>> consultarAgendaByIdPaciente(Long id);
 	
 	@Query("{documento:'?0'}")
-	public Optional<Agenda> consultarAgendaByDocumentoMedico(String documento);
+	public List<Optional<Agenda>> consultarAgendaByDocumentoMedico(String documento);
 	
-	@Query("{documento:'?0'}")
-	public Optional<Agenda> consultarAgendaByDocumentoPaciente(String documento);
-	
-	@Query("{nombre:'?0'}")
-	public Optional<Agenda> consultarAgendaByNombrePaciente(String nombre);
+	@Query("{documentoPaciente:'?0'}")
+	public List<Optional<Agenda>> consultarAgendaByDocumentoPaciente(String documentoPaciente);
 	
 	@Query("{nombre:'?0'}")
-	public Optional<Agenda> consultarAgendaByNombreMedico(String nombre);
+	public List<Optional<Agenda>> consultarAgendaByNombrePaciente(String nombre);
+	
+	@Query("{nombre:'?0'}")
+	public List<Optional<Agenda>> consultarAgendaByNombreMedico(String nombre);
 	
 	@Query("{documento:'?0'}")
 	public Optional<Agenda> eliminarAgendaByDocumentoPaciente(String documento);

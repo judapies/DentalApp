@@ -35,7 +35,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Juan David Piñeros\",\r\n    \"documento\":\"1012389419\",\r\n    \"telefono\":\"3138429622\",\r\n    \"direccion\":\"Cra 78 #  00-00\",\r\n    \"centroMedico\":\"Bogota\"\r\n}",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Juan Esteban Piñeros\",\r\n    \"documento\":\"1222214163\",\r\n    \"telefono\":\"3138429622\",\r\n    \"direccion\":\"Cra 78 #  00-00\",\r\n    \"centroMedico\":\"Bogota\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -367,6 +367,82 @@
 								"1"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Agenda",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"fecha\":\"12/10/2022\",\r\n    \"hora\":\"19:34\",\r\n    \"medicoId\":1,\r\n    \"documentoPaciente\":\"1012389418\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9011/api/agendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Agenda por nombre de Medico",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Agenda por nombre de Paciente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/agendas/nombre/paciente/Carlos Perez",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"agendas",
+								"nombre",
+								"paciente",
+								"Carlos Perez"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Agenda por Documento de Medico",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Agenda por Documento de Paciente",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}

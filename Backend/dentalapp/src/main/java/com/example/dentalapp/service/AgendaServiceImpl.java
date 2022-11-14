@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dentalapp.model.Agenda;
+import com.example.dentalapp.model.Medico;
+import com.example.dentalapp.model.Paciente;
 import com.example.dentalapp.repository.AgendaRepository;
 import com.example.dentalapp.repository.MedicoRepository;
 import com.example.dentalapp.repository.PacienteRepository;
@@ -34,38 +36,70 @@ public class AgendaServiceImpl implements AgendaService {
 	}
 
 	@Override
-	public Optional<Agenda> consultarAgendaPorDocumentoPaciente(String documento) {
+	public List<Optional<Agenda>> consultarAgendaPorDocumentoPaciente(String documento) {
 		if(documento==null)
 			return null;
-		return repositorio.consultarAgendaByDocumentoPaciente(documento);
+		Optional<Paciente> consultaPaciente=repoPaciente.findPacienteByDocumento(documento);
+		if(consultaPaciente.isEmpty()) {
+			return null;
+		}else {			
+			return repositorio.consultarAgendaByDocumentoPaciente(consultaPaciente.get().getDocumento());
+		}
 	}
 
 	@Override
-	public Optional<Agenda> consultarAgendaPorNombrePaciente(String nombre) {
+	public List<Optional<Agenda>> consultarAgendaPorNombrePaciente(String nombre) {
 		if(nombre==null)
 			return null;
-		return repositorio.consultarAgendaByNombrePaciente(nombre);
+		Optional<Paciente> consultaPaciente=repoPaciente.findPacienteByNombre(nombre);
+		if(consultaPaciente.isEmpty()) {
+			return null;
+		}else {
+			return repositorio.consultarAgendaByDocumentoPaciente(consultaPaciente.get().getDocumento());
+		}
 	}
 
 	@Override
-	public Optional<Agenda> consultarAgendaPorDocumentoMedico(String documento) {
+	public List<Optional<Agenda>> consultarAgendaPorDocumentoMedico(String documento) {
 		if(documento==null)
 			return null;
-		return repositorio.consultarAgendaByDocumentoMedico(documento);
+		Optional<Medico> consultaMedico=repoMedico.findMedicoByDocumento(documento);
+		if(consultaMedico.isEmpty()) {
+			return null;
+		}else {
+			return repositorio.consultarAgendaByIdMedico(consultaMedico.get().getId());
+		}
 	}
 
 	@Override
-	public Optional<Agenda> consultarAgendaPorNombreMedico(String nombre) {
-		if(nombre==null)
+	public List<Optional<Agenda>> consultarAgendaPorNombreMedico(String nombre) {
+		if(nombre==null || nombre.equals(""))
 			return null;
-		return repositorio.consultarAgendaByNombreMedico(nombre);
+		Optional<Medico> consultaMedico=repoMedico.findMedicoByNombre(nombre);
+		if(consultaMedico.isEmpty()) {
+			return null;
+		}else {
+			return repositorio.consultarAgendaByIdMedico(consultaMedico.get().getId());
+		}
 	}
 
 	@Override
 	public Agenda crearAgenda(Agenda agenda) {
 		if(agenda==null)
 			return null;
-		return repositorio.insert(agenda);
+		Optional<Medico> consultaMedico=repoMedico.findById(agenda.getMedicoId());
+		Optional<Paciente> consultaPaciente=repoPaciente.findPacienteByDocumento(agenda.getDocumentoPaciente());
+		
+		if(consultaPaciente.isEmpty()) {
+			return new Agenda(null, null, null, null, null);
+		}else {
+			if(consultaMedico.isEmpty()) {
+				return new Agenda(null, null, null, null, null);
+			}else {
+				//Falta Añadir aca validacion de fecha y hora por Id de medico para que no se agenden 2 citas al tiempo
+				return repositorio.insert(agenda);
+			}
+		}
 	}
 
 	@Override

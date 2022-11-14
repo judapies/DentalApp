@@ -41,7 +41,12 @@ public class PacienteServiceImpl implements PacienteService {
 	public Paciente crearPaciente(Paciente paciente) {
 		if(paciente==null)
 			return null;
-		return repositorio.insert(paciente);
+		Optional<Paciente> consulta = consultarPacientePorDocumento(paciente.getDocumento());
+		if(consulta.isEmpty()) {
+			return repositorio.insert(paciente);
+		}else {
+			return consulta.get();
+		}
 	}
 
 	@Override

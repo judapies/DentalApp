@@ -13,6 +13,9 @@ import com.example.dentalapp.model.Paciente;
 @Repository
 public interface PacienteRepository extends MongoRepository<Paciente, Long>{
 	
+	@Query("{nombre:'?0'}")
+	public Optional<Paciente> findPacienteByNombre(String nombre);
+	
 	@Query("{documento:'?0'}")
 	public Optional<Paciente> findPacienteByDocumento(String documento);
 	

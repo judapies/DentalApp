@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "0735559a-42a0-4c1d-b769-b1ad0ea60ee9",
+		"name": "Solicitudes Dental APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Consultar todos los pacientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir Paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Juan David Piñeros\",\r\n    \"documento\":\"1012389419\",\r\n    \"telefono\":\"3138429622\",\r\n    \"direccion\":\"Cra 78 #  00-00\",\r\n    \"centroMedico\":\"Bogota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar paciente por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar pacientes por documento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/documento/1012389419",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"documento",
+								"1012389419"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar paciente por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar paciente por Documento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/documento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"documento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Paciente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Juan David Piñeros\",\r\n    \"documento\":\"1012389419\",\r\n    \"telefono\":\"3138429622\",\r\n    \"direccion\":\"Cra 78 # F 33 00-00\",\r\n    \"centroMedico\":\"Bogota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medico",
+			"item": [
+				{
+					"name": "Consultar todos los medicos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Medico por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Medico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Carlos Perez\",\r\n    \"documento\":\"80435272\",\r\n    \"telefono\":\"3134433445\",\r\n    \"consultorio\":\"201\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9011/api/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Medico",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Medico",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/medicos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agendas",
+			"item": [
+				{
+					"name": "Consultar todas las agendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/agendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Agendas por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/agendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Agenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"fecha\":\"12/10/2022\",\r\n    \"hora\":\"19:34\",\r\n    \"medicoId\":1,\r\n    \"documentoPaciente\":\"1012389419\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9011/api/agendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"agendas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Agenda por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/agendas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"agendas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

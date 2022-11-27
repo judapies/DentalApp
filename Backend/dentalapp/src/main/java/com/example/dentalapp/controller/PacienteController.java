@@ -37,6 +37,11 @@ public class PacienteController {
 		return ResponseEntity.status(HttpStatus.OK).body(servicio.consultarPacientePorDocumento(documento));
 	}
 	
+	@GetMapping("/clave/{correo}/{clave}")
+	public ResponseEntity<?> consultarPacientePorCorreo(@PathVariable String correo,@PathVariable String clave){
+		return ResponseEntity.status(HttpStatus.OK).body(servicio.consultarPacientePorCorreoClave(correo,clave));
+	}
+	
 	@PostMapping
 	public ResponseEntity<?> crearPaciente(@RequestBody Paciente paciente){
 		return ResponseEntity.status(HttpStatus.OK).body(servicio.crearPaciente(paciente));

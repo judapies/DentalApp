@@ -21,4 +21,7 @@ public interface PacienteRepository extends MongoRepository<Paciente, Long>{
 	
 	@Query("{documento:'?0'}")
 	public Optional<Paciente> deleteByDocumento(String documento);
+	
+	@Query("{correo:'?0'}")
+	public Optional<Paciente> findPacienteByCorreo(String correo);
 }

@@ -36,7 +36,28 @@ public class PacienteServiceImpl implements PacienteService {
 		
 		return repositorio.findPacienteByDocumento(documento);
 	}
+	
+	@Override
+	public Optional<Paciente> consultarPacientePorCorreo(String correo) {
+		if(correo==null)
+			return null;
+		return repositorio.findPacienteByCorreo(correo);
+	}
 
+	@Override
+	public Optional<Paciente> consultarPacientePorCorreoClave(String correo, String clave) {
+		if(correo==null || clave==null)
+			return null;
+		Optional<Paciente> repo=repositorio.findPacienteByCorreo(correo);
+		System.out.println(repo);
+		System.out.println(repo.get().getClave());
+		if(repo.get().getClave()==clave) {
+			return repo; 
+		}else {
+			return null;
+		}
+	}
+	
 	@Override
 	public Paciente crearPaciente(Paciente paciente) {
 		if(paciente==null)

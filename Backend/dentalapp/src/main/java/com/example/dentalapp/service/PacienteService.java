@@ -10,6 +10,8 @@ public interface PacienteService {
 	public List<Paciente> consultarTodos();
 	public Optional<Paciente> consultarPacientePorId(Long id);
 	public Optional<Paciente> consultarPacientePorDocumento(String documento);
+	public Optional<Paciente> consultarPacientePorCorreo(String correo);
+	public Optional<Paciente> consultarPacientePorCorreoClave(String correo,String clave);
 	public Paciente crearPaciente(Paciente paciente);
 	public String eliminarPacientePorDocumento(String documento);
 	public String eliminarPacientePorId(Long id);

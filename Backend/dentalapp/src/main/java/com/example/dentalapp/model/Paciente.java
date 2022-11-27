@@ -12,8 +12,10 @@ public class Paciente {
 	private String telefono;
 	private String direccion;
 	private String centroMedico;
+	private String correo;
+	private String clave;
 	
-	public Paciente(Long id, String nombre, String documento, String telefono, String direccion, String centroMedico) {
+	public Paciente(Long id, String nombre, String documento, String telefono, String direccion, String centroMedico,String correo,String clave) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -21,6 +23,8 @@ public class Paciente {
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.centroMedico = centroMedico;
+		this.correo= correo;
+		this.clave= clave;
 	}
 
 	public Long getId() {
@@ -69,6 +73,22 @@ public class Paciente {
 
 	public void setCentroMedico(String centroMedico) {
 		this.centroMedico = centroMedico;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 
 	@Override

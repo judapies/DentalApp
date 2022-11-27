@@ -49,11 +49,9 @@ public class PacienteServiceImpl implements PacienteService {
 		if(correo==null || clave==null)
 			return null;
 		Optional<Paciente> repo=repositorio.findPacienteByCorreo(correo);
-		System.out.println(repo);
-		System.out.println(repo.get().getClave());
-		if(repo.get().getClave()==clave) {
+		if(repo.get().getClave().equals(clave)) {
 			return repo; 
-		}else {
+		}else {			
 			return null;
 		}
 	}

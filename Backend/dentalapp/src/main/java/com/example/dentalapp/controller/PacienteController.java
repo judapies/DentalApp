@@ -1,5 +1,7 @@
 package com.example.dentalapp.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +39,24 @@ public class PacienteController {
 		return ResponseEntity.status(HttpStatus.OK).body(servicio.consultarPacientePorDocumento(documento));
 	}
 	
+	@GetMapping("/correo/{correo}")
+	public ResponseEntity<?> consultarPacientePorCorreo(@PathVariable String correo){
+		Optional<Paciente> pac=servicio.consultarPacientePorCorreo(correo);
+		if(pac==null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error");
+		}else {
+			return ResponseEntity.status(HttpStatus.OK).body(pac);
+		}
+	}
+	
 	@GetMapping("/clave/{correo}/{clave}")
-	public ResponseEntity<?> consultarPacientePorCorreo(@PathVariable String correo,@PathVariable String clave){
-		return ResponseEntity.status(HttpStatus.OK).body(servicio.consultarPacientePorCorreoClave(correo,clave));
+	public ResponseEntity<?> consultarPacientePorCorreoClave(@PathVariable String correo,@PathVariable String clave){
+		Optional<Paciente> pac=servicio.consultarPacientePorCorreoClave(correo,clave);
+		if(pac==null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error");
+		}else {
+			return ResponseEntity.status(HttpStatus.OK).body(pac);
+		}
 	}
 	
 	@PostMapping

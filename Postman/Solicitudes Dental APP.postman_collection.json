@@ -101,6 +101,50 @@
 					"response": []
 				},
 				{
+					"name": "Consultar pacientes por correo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/documento/1012389419",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"documento",
+								"1012389419"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar pacientes por correo & clave",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/clave/correo@correo.com&1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"clave",
+								"correo@correo.com&1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Eliminar paciente por ID",
 					"request": {
 						"method": "DELETE",
@@ -150,7 +194,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Juan David Piñeros\",\r\n    \"documento\":\"1012389419\",\r\n    \"telefono\":\"3138429622\",\r\n    \"direccion\":\"Cra 78 # F 33 00-00\",\r\n    \"centroMedico\":\"Bogota\"\r\n}",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\":\"Juan David Piñeros\",\r\n    \"documento\":\"1012389419\",\r\n    \"telefono\":\"3138429622\",\r\n    \"direccion\":\"Cra 78 # F 33 00-00\",\r\n    \"centroMedico\":\"Bogota\",\r\n    \"correo\":\"correo1@correo.com\",\r\n    \"clave\":\"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

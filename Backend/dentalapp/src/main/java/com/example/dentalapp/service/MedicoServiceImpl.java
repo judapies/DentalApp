@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dentalapp.model.Medico;
 import com.example.dentalapp.repository.MedicoRepository;
+import com.example.dentalapp.util.JWTUtil;
 
 @Service
 public class MedicoServiceImpl implements MedicoService {
@@ -53,4 +54,9 @@ public class MedicoServiceImpl implements MedicoService {
 		return repositorio.save(medico);
 	}
 
+	@Override
+	public String autenticacion(Medico medico) {
+		String role ="admin";
+		return JWTUtil.getToken(medico.getNombre(),role);
+	}
 }

@@ -11,6 +11,16 @@
 				{
 					"name": "Consultar todos los pacientes",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJKV1Rjb3JyZW8zQGNvcnJlby5jb20iLCJzdWIiOiJjb3JyZW8zQGNvcnJlby5jb20iLCJhdXRob3JpdGllcyI6WyJhZG1pbiJdLCJpYXQiOjE2NzAzNzIyNjcsImV4cCI6MTY3MDM3MjI5N30.vnIc6ngww2j3GAzbGGRh1G8Xt6T8VfhGQ4wFUN6SwSvHAMl9wL3ei9YU32ERK6rGGa-UzM2x8UBXq7vugQzpcQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -215,6 +225,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Solicitar Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9011/api/pacientes/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"pacientes",
+								"token"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -303,6 +334,15 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:9011/api/medicos/1",
 							"protocol": "http",
@@ -314,6 +354,36 @@
 								"api",
 								"medicos",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Solicitar Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":3,\r\n    \"nombre\":\"Mauricio Paez\",\r\n    \"documento\":\"1012345549\",\r\n    \"telefono\":\"3164643827\",\r\n    \"consultorio\":\"402\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9011/api/medicos/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9011",
+							"path": [
+								"api",
+								"medicos",
+								"token"
 							]
 						}
 					},

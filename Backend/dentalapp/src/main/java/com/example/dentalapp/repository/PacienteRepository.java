@@ -24,4 +24,7 @@ public interface PacienteRepository extends MongoRepository<Paciente, Long>{
 	
 	@Query("{correo:'?0'}")
 	public Optional<Paciente> findPacienteByCorreo(String correo);
+	
+	@Query("{usuario:'?0',clave:'?1'}")
+	public Optional<Paciente> login(String usuario,String clave);
 }

@@ -16,4 +16,5 @@ public interface PacienteService {
 	public String eliminarPacientePorDocumento(String documento);
 	public String eliminarPacientePorId(Long id);
 	public Paciente actualizarPaciente(Paciente paciente);
+	public String autenticacion(Paciente paciente);
 }

@@ -1,5 +1,6 @@
 package com.example.dentalapp.controller;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dentalapp.model.Medico;
+import com.example.dentalapp.model.Paciente;
 import com.example.dentalapp.service.MedicoService;
 
 @RestController
@@ -45,5 +47,15 @@ public class MedicoController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminarMedico(@PathVariable Long id){
 		return ResponseEntity.status(HttpStatus.OK).body(servicio.eliminarMedico(id));
+	}
+	
+	@PostMapping("/token")
+	public ResponseEntity<?> login(@RequestBody Medico medico){
+		String respuesta= servicio.autenticacion(medico);
+		if(respuesta==null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}else {
+			return ResponseEntity.status(HttpStatus.OK).body((new JSONObject().put("token",respuesta)).toString());
+		}
 	}
 }

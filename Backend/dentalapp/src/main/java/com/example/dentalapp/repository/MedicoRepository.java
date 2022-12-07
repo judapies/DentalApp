@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.dentalapp.model.Medico;
+import com.example.dentalapp.model.Paciente;
 
 @Repository
 public interface MedicoRepository extends MongoRepository<Medico, Long>{
@@ -16,4 +17,7 @@ public interface MedicoRepository extends MongoRepository<Medico, Long>{
 	
 	@Query("{nombre:'?0'}")
 	public Optional<Medico> findMedicoByNombre(String nombre);
+	
+	@Query("{usuario:'?0',clave:'?1'}")
+	public Optional<Medico> login(String usuario,String clave);
 }

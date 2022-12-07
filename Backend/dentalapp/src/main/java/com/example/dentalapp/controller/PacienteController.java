@@ -2,6 +2,7 @@ package com.example.dentalapp.controller;
 
 import java.util.Optional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,5 +78,15 @@ public class PacienteController {
 	@PutMapping
 	public ResponseEntity<?> actualizarPaciente(@RequestBody Paciente paciente){
 		return ResponseEntity.status(HttpStatus.OK).body(servicio.actualizarPaciente(paciente));
+	}
+	
+	@PostMapping("/token")
+	public ResponseEntity<?> login(@RequestBody Paciente paciente){
+		String respuesta= servicio.autenticacion(paciente);
+		if(respuesta==null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}else {
+			return ResponseEntity.status(HttpStatus.OK).body((new JSONObject().put("token",respuesta)).toString());
+		}
 	}
 }

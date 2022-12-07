@@ -40,8 +40,10 @@ public class DentalappApplication {
             .antMatchers(HttpMethod.POST,"/api/medicos/token").permitAll()
             .antMatchers(HttpMethod.POST,"/api/pacientes").permitAll()
             .antMatchers(HttpMethod.POST,"/api/medicos").permitAll()
+            .antMatchers(HttpMethod.POST,"/api/agendas").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/agendas").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/medicos").permitAll()
             .antMatchers(HttpMethod.GET,"/api/pacientes").hasAuthority("admin")
-            .antMatchers(HttpMethod.GET,"/api/medicos").hasAuthority("admin")
             .anyRequest().authenticated()
             .and().csrf().disable().cors().configurationSource(request -> configuration);
         }
